@@ -1,0 +1,83 @@
+2014-09-07 09:33:52
+Full thread dump OpenJDK 64-Bit Server VM (24.65-b04 mixed mode):
+
+"Attach Listener" daemon prio=10 tid=0x00007f58c8001000 nid=0x45eb waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"DestroyJavaVM" prio=10 tid=0x00007f58e4008800 nid=0x4591 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Thread-1" prio=10 tid=0x00007f58e40e7000 nid=0x459b waiting for monitor entry [0x00007f58e876d000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at chinahadoop.deadlock.App$ThreadB.run(App.java:40)
+	- waiting to lock <0x00000000b8e5af38> (a java.lang.Object)
+	- locked <0x00000000b8e5af48> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Thread-0" prio=10 tid=0x00007f58e40e0800 nid=0x459a waiting for monitor entry [0x00007f58e886e000]
+   java.lang.Thread.State: BLOCKED (on object monitor)
+	at chinahadoop.deadlock.App$ThreadA.run(App.java:22)
+	- waiting to lock <0x00000000b8e5af48> (a java.lang.Object)
+	- locked <0x00000000b8e5af38> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:745)
+
+"Service Thread" daemon prio=10 tid=0x00007f58e40a5000 nid=0x4598 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread1" daemon prio=10 tid=0x00007f58e40a2800 nid=0x4597 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"C2 CompilerThread0" daemon prio=10 tid=0x00007f58e40a0000 nid=0x4596 waiting on condition [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Signal Dispatcher" daemon prio=10 tid=0x00007f58e409e000 nid=0x4595 runnable [0x0000000000000000]
+   java.lang.Thread.State: RUNNABLE
+
+"Finalizer" daemon prio=10 tid=0x00007f58e4070800 nid=0x4594 in Object.wait() [0x00007f58e8e7d000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000b8e05598> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:135)
+	- locked <0x00000000b8e05598> (a java.lang.ref.ReferenceQueue$Lock)
+	at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:151)
+	at java.lang.ref.Finalizer$FinalizerThread.run(Finalizer.java:209)
+
+"Reference Handler" daemon prio=10 tid=0x00007f58e406e800 nid=0x4593 in Object.wait() [0x00007f58e8f7e000]
+   java.lang.Thread.State: WAITING (on object monitor)
+	at java.lang.Object.wait(Native Method)
+	- waiting on <0x00000000b8e05120> (a java.lang.ref.Reference$Lock)
+	at java.lang.Object.wait(Object.java:503)
+	at java.lang.ref.Reference$ReferenceHandler.run(Reference.java:133)
+	- locked <0x00000000b8e05120> (a java.lang.ref.Reference$Lock)
+
+"VM Thread" prio=10 tid=0x00007f58e406a000 nid=0x4592 runnable 
+
+"VM Periodic Task Thread" prio=10 tid=0x00007f58e40b0000 nid=0x4599 waiting on condition 
+
+JNI global references: 116
+
+
+Found one Java-level deadlock:
+=============================
+"Thread-1":
+  waiting to lock monitor 0x00007f58d40062c8 (object 0x00000000b8e5af38, a java.lang.Object),
+  which is held by "Thread-0"
+"Thread-0":
+  waiting to lock monitor 0x00007f58d4004e28 (object 0x00000000b8e5af48, a java.lang.Object),
+  which is held by "Thread-1"
+
+Java stack information for the threads listed above:
+===================================================
+"Thread-1":
+	at chinahadoop.deadlock.App$ThreadB.run(App.java:40)
+	- waiting to lock <0x00000000b8e5af38> (a java.lang.Object)
+	- locked <0x00000000b8e5af48> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:745)
+"Thread-0":
+	at chinahadoop.deadlock.App$ThreadA.run(App.java:22)
+	- waiting to lock <0x00000000b8e5af48> (a java.lang.Object)
+	- locked <0x00000000b8e5af38> (a java.lang.Object)
+	at java.lang.Thread.run(Thread.java:745)
+
+Found 1 deadlock.
+
