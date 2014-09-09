@@ -3,9 +3,7 @@ package chinahadoop.p4.pipe;
 import java.io.PipedOutputStream;
 import java.io.PrintStream;
 
-/**
- * Created by shen on 14-9-2.
- */
+
 public class MyWriter extends Thread {
     private PipedOutputStream out = null;
     private String message[] = {"1","2"};

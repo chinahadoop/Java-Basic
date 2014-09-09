@@ -4,9 +4,7 @@ import java.io.DataInputStream;
 import java.io.IOException;
 import java.io.PipedInputStream;
 
-/**
- * Created by shen on 14-9-2.
- */
+
 public class MyReader extends Thread {
     private PipedInputStream in = null;
     private String message[] = {"1","2"};
