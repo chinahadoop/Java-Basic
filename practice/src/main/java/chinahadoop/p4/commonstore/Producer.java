@@ -41,11 +41,11 @@ public class Producer implements Runnable {
             Product pro = new Product(i);
             storeHouse.push(pro);
             System.out.println(getProducerName()+" 生产了："+pro);
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
 
         }
     }

@@ -38,7 +38,7 @@ public class Consumer implements Runnable {
         while (true){
             System.out.println(this.getConsumerName()+" 消费了："+storeHouse.pop());
             try {
-                Thread.sleep(10000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
