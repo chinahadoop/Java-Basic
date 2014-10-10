@@ -65,7 +65,7 @@ public class Calculator {
 	}
 	
 	private static boolean isInputValid(String input) {
-		String regex = "^(\\(*\\d+(.\\d+)*\\)*(\\+|-|/|\\*))+\\d+(.\\d+)*\\)*$"; 
+		String regex = "^(\\(*\\d+(\\.\\d+)?\\)*(\\+|-|/|\\*))+\\d+(\\.\\d+)?\\)*$"; 
 		return Pattern.matches(regex, input);
 	}
 	
