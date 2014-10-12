@@ -20,8 +20,8 @@ public class Write {
 			FileOutputStream fout = new FileOutputStream(writePath);
 			Writer w = new OutputStreamWriter(fout, "UTF-8");
 			pw = new PrintWriter(w);
-			for (String line : lineList) {
-				pw.println(line);
+			for (int i = lineList.size() - 1; i >= 0; i--) {
+				pw.println(lineList.get(i));
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
