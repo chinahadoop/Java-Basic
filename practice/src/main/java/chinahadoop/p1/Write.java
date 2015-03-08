@@ -32,7 +32,7 @@ public class Write {
 					pw.close();
 				} catch (Exception e) {
 					e.printStackTrace();
-					throw e;
+					throw (new IOException(e));
 				}
 		}
 	}
